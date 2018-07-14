@@ -26,6 +26,14 @@ class BoardTest < Minitest::Test
     expected = 6
 
     assert_equal expected, actual
+
+    all_periods = true
+    actual = board.rows.values.each do |spots|
+                  if spots.uniq != ["."]
+                    all_periods = false
+                  end
+                end
+    assert_equal true, all_periods
   end
 
 end
