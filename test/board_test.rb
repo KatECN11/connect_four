@@ -40,15 +40,9 @@ class BoardTest < Minitest::Test
     board = Board.new
 
     expected =
-    "ABCDEFG\n
-    .......\n
-    .......\n
-    .......\n
-    .......\n
-    .......\n
-    ......."
+    "ABCDEFG\n.......\n.......\n.......\n.......\n.......\n......."
 
     assert_equal expected, board.print_board
-  end 
+  end
 
 end
