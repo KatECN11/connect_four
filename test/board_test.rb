@@ -19,18 +19,13 @@ class BoardTest < Minitest::Test
     assert_equal expected, board.column_names
   end
 
-  def test_it_prints_a_new_board
+  def test_it_starts_with_6_rows_with_7_periods
     board = Board.new
 
-    expected = "ABCDEFG\n
-                .......\n
-                .......\n
-                .......\n
-                .......\n
-                .......\n
-                ......."
+    actual = board.rows.values.count
+    expected = 6
 
-    assert_equal expected, board.print_board
+    assert_equal expected, actual
   end
 
 end
