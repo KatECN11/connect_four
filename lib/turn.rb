@@ -1,7 +1,10 @@
 class Turn
+  attr_reader :owner 
 
-  def initialize(owner)
-    @owner = owner
-  end 
+  def initialize
+    @owner = "Player"
+  end
+
+
 
 end
