@@ -13,10 +13,10 @@ class Board
   end
 
   def print_board
-    puts @column_names.join
-    @rows.each do |row, spots|
-      puts spots.join + "\n"
-    end
+    printed_rows = @rows.values.map do |spots|
+                    spots.join
+                   end
+    @column_names.join + "\n" + printed_rows.join("\n")
   end
 
 end
