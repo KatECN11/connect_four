@@ -16,6 +16,12 @@ class TurnTest < Minitest::Test
     turn = Turn.new
 
     assert_equal "Player", turn.owner
-  end 
+  end
+
+  def test_it_takes_player_input
+    turn = Turn.new
+
+    assert_equal "A", turn.player("a")
+  end
 
 end
