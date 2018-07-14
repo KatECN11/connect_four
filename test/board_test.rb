@@ -36,4 +36,19 @@ class BoardTest < Minitest::Test
     assert_equal true, all_periods
   end
 
+  def test_it_prints_board
+    board = Board.new
+
+    expected =
+    "ABCDEFG\n
+    .......\n
+    .......\n
+    .......\n
+    .......\n
+    .......\n
+    ......."
+
+    assert_equal expected, board.print_board
+  end 
+
 end
