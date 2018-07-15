@@ -1,11 +1,8 @@
 class Piece
-  attr_reader :owner
+  attr_reader :owner, :symbol 
 
-  def initialize(owner)
+  def initialize(owner, symbol)
     @owner = owner
-  end
-
-  def player
-    "X"
+    @symbol = symbol
   end
 end
