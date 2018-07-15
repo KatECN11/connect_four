@@ -18,6 +18,6 @@ class Board
     joint_rows = rows.map do |row|
                   row.join
                 end
-    @columns.keys.join + ("\n") + joint_rows.join("\n")
+    @columns.keys.join + ("\n") + joint_rows.reverse.join("\n")
   end
 end
