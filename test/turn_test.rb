@@ -53,5 +53,18 @@ class TurnTest < Minitest::Test
     assert board.columns.keys.include?(turn.guess)
   end
 
+  def test_computer_guess_recorded
+    piece = Piece.new("Player", "X")
+    board = Board.new
+    turn = Turn.new("A", board, piece)
+
+    turn.find_spot
+    first_move = board.print_board
+    turn.computer_turn
+    turn.find_spot
+    second_move = board.print_board
+
+    refute first_move == second_move
+  end
 
 end
