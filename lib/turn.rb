@@ -1,15 +1,12 @@
 class Turn
-  attr_reader :owner
 
-  def initialize
-    @owner = "Player"
+  def initialize(guess)
+    @guess = guess
   end
 
-  def player(player_column_choice)
-    player_column_choice.upcase
+  def guess
+    @guess.upcase
   end
-
-
-
+    
 
 end

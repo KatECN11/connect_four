@@ -18,15 +18,6 @@ class TurnTest < Minitest::Test
     assert_equal "A", turn.guess
   end
 
-  def test_it_finds_next_spot_in_column
-    board = Board.new
-    turn = Turn.new("A")
-
-    expected = board.columns["A"][0]
-    actual = turn.find_spot
-
-    assert_equal expected, actual
-  end
 
 
 
