@@ -1,5 +1,5 @@
 class Board
-  attr_reader :column_names, :columns
+  attr_accessor :columns
 
   def initialize
     @columns = {
