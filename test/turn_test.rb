@@ -43,6 +43,15 @@ class TurnTest < Minitest::Test
     assert_equal expected, actual
   end
 
+  def test_computer_takes_random_guess_after_player
+    piece = Piece.new("Player", "X")
+    board = Board.new
+    turn = Turn.new("A", board, piece)
+
+    turn.computer_turn
+    assert_equal "O", piece.symbol
+    assert board.columns.keys.include?(turn.guess)
+  end
 
 
 end
