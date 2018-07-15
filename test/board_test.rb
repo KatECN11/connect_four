@@ -36,7 +36,7 @@ class BoardTest < Minitest::Test
     actual = ["X", ".", ".", ".", ".", "."]
 
     assert_equal expected, actual
-  end 
+  end
 
   def test_it_prints_board
     board = Board.new
@@ -46,18 +46,6 @@ class BoardTest < Minitest::Test
 
     assert_equal expected, board.print_board
   end
-
-
-    def test_it_finds_next_spot_in_column
-      skip
-      board = Board.new
-      turn = Turn.new("A")
-
-      expected = board.columns["A"][0]
-      actual = turn.find_spot
-
-      assert_equal expected, actual
-    end
 
 
 end
