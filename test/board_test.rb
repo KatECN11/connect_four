@@ -28,6 +28,16 @@ class BoardTest < Minitest::Test
     assert_equal true, all_periods
   end
 
+  def test_columns_can_be_updated
+    board = Board.new
+
+    board.columns["A"][0] = "X"
+    expected = board.columns["A"]
+    actual = ["X", ".", ".", ".", ".", "."]
+
+    assert_equal expected, actual
+  end 
+
   def test_it_prints_board
     board = Board.new
 
@@ -39,6 +49,7 @@ class BoardTest < Minitest::Test
 
 
     def test_it_finds_next_spot_in_column
+      skip
       board = Board.new
       turn = Turn.new("A")
 
@@ -47,8 +58,6 @@ class BoardTest < Minitest::Test
 
       assert_equal expected, actual
     end
-
-
 
 
 end
