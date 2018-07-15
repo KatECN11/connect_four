@@ -44,8 +44,7 @@ class BoardTest < Minitest::Test
     expected =
     "ABCDEFG\n.......\n.......\n.......\n.......\n.......\n......."
 
-    assert_equal expected, board.print_board
+    assert_equal expected, board.print_prep
   end
-
 
 end

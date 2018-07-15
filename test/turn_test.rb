@@ -59,12 +59,25 @@ class TurnTest < Minitest::Test
     turn = Turn.new("A", board, piece)
 
     turn.find_spot
-    first_move = board.print_board
+    first_move = board.print_prep
     turn.computer_turn
     turn.find_spot
-    second_move = board.print_board
+    second_move = board.print_prep
 
     refute first_move == second_move
+    assert_equal 2, turn.turn_count
   end
+
+  def test_it_cycles_through_a_turn_set
+    skip
+    piece = Piece.new("Player", "X")
+    board = Board.new
+    turn = Turn.new("A", board, piece)
+
+    turn.one_turn_cycle
+
+    assert_equal 2, turn.turn_count
+  end
+
 
 end
