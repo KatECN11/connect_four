@@ -1,5 +1,5 @@
 class Piece
-  attr_reader :owner, :symbol 
+  attr_accessor :owner, :symbol
 
   def initialize(owner, symbol)
     @owner = owner
