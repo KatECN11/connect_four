@@ -57,6 +57,20 @@ class BoardTest < Minitest::Test
     turn.one_turn_cycle
 
     refute board.win?
+
+    board.columns = {
+      "A" => ["X", "X", ".", ".", ".", "."],
+      "B" => ["O", "O", "O", ".", ".", "."],
+      "C" => ["X", "X", "X", "X", ".", "."],
+      "D" => ["O", ".", ".", ".", ".", "."],
+      "E" => ["O", ".", ".", ".", ".", "."],
+      "F" => [".", ".", ".", ".", ".", "."],
+      "G" => [".", ".", ".", ".", ".", "."]
+    }
+
+    assert_equal "You win!", board.win?
   end
+
+
 
 end
