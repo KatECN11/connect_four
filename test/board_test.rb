@@ -77,7 +77,20 @@ class BoardTest < Minitest::Test
     expected = "O"
 
     assert_equal expected, actual
+  end
 
+  def test_it_can_find_four_in_a_row
+    board = Board.new
+
+    board.columns["A"] = ["X", ".", ".", ".", ".", "."]
+    board.columns["B"] = ["X", ".", ".", ".", ".", "."]
+    board.columns["C"] = ["X", ".", ".", ".", ".", "."]
+    board.columns["D"] = ["X", ".", ".", ".", ".", "."]
+
+    expected = "X"
+    actual = board.four_in_a_row
+
+    assert_equal expected, actual
   end
 
 
