@@ -2,6 +2,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/piece'
 require './lib/board'
+require './lib/turn'
 
 class BoardTest < Minitest::Test
 
@@ -44,8 +45,18 @@ class BoardTest < Minitest::Test
     expected =
     "ABCDEFG\n.......\n.......\n.......\n.......\n.......\n......."
 
-    assert_equal expected, board.print_board
+    assert_equal expected, board.print_prep
   end
 
+  def test_it_checks_for_a_win
+    board = Board.new
+    piece = Piece.new("Player", "X")
+    turn = Turn.new(board, piece)
+
+    turn.new_guess("A")
+    turn.one_turn_cycle
+
+    refute board.win?
+  end
 
 end

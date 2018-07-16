@@ -1,10 +1,22 @@
 require './lib/board'
-
-puts "Welcome to Connect Four!  Here is your board:"
+require './lib/piece'
+require './lib/turn'
 
 board = Board.new
-puts board.print_board
+piece = Piece.new("Player", "X")
+play = Turn.new(board, piece)
 
-puts "What column would you like to place your piece?"
-player_column_choice = gets.chomp
-turn = Turn.new(player_column_choice)
+puts "Welcome to Connect Four!  Here is your board:"
+board.print_board
+
+while play.turn_count <= 7
+  puts "What column would you like to place your piece?"
+  new_guess = gets.chomp
+  play.new_guess(new_guess)
+end
+
+until board.win?
+    puts "What column would you like to place your piece?"
+    new_guess = gets.chomp
+    play.new_guess(new_guess)
+end
