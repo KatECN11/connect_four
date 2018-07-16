@@ -27,15 +27,20 @@ class Board
 
   def four_in_a_column
     winning_piece = ""
-    @columns.values.each.with_index do |spaces, i|
-      test = spaces[i]
-      if test != "."
-        if (test == spaces[i+1]) && (test = spaces[i+2]) && (test = spaces[i+3])
-          winning_piece = test
+    @columns.values.each do |spaces|
+        3.times do |i|
+          test = spaces[i]
+          if test != "."
+            if (test == spaces[i+1]) && (test = spaces[i+2]) && (test = spaces[i+3])
+              winning_piece = test
+              break
+            end
+          end
         end
       end
-    end
     winning_piece
   end
+
+  
 
 end

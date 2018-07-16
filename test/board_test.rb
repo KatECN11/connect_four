@@ -69,6 +69,15 @@ class BoardTest < Minitest::Test
     expected = "X"
 
     assert_equal expected, actual
+
+    board.columns["A"] = ["X", "X", "O", "X", ".", "."]
+    board.columns["F"] = ["X", "X", "O", "O", "O", "O"]
+
+    actual = board.four_in_a_column
+    expected = "O"
+
+    assert_equal expected, actual
+
   end
 
 
