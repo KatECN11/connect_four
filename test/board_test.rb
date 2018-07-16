@@ -49,6 +49,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_it_checks_for_a_win
+    skip
     board = Board.new
     piece = Piece.new("Player", "X")
     turn = Turn.new(board, piece)
@@ -56,21 +57,19 @@ class BoardTest < Minitest::Test
     turn.new_guess("A")
     turn.one_turn_cycle
 
-    refute board.win?
-
-    board.columns = {
-      "A" => ["X", "X", ".", ".", ".", "."],
-      "B" => ["O", "O", "O", ".", ".", "."],
-      "C" => ["X", "X", "X", "X", ".", "."],
-      "D" => ["O", ".", ".", ".", ".", "."],
-      "E" => ["O", ".", ".", ".", ".", "."],
-      "F" => [".", ".", ".", ".", ".", "."],
-      "G" => [".", ".", ".", ".", ".", "."]
-    }
-
-    assert_equal "You win!", board.win?
+    refute board.horizontal_win?
   end
 
+  def test_it_can_find_four_in_a_column
+    board = Board.new
+
+    board.columns["A"] = ["X", "X", "X", "X", ".", "."]
+
+    actual = board.four_in_a_column
+    expected = "X"
+
+    assert_equal expected, actual
+  end
 
 
 end

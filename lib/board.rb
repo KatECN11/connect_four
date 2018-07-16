@@ -25,16 +25,17 @@ class Board
     @columns.keys.join + ("\n") + joint_rows.reverse.join("\n")
   end
 
-  def win?
-    # input algorithm to determine win/loss/draw
-    # if  == "win"
-    #   puts "You win!"
-    # elsif  == "draw"
-    #   puts "Tie Game"
-    # elsif  == "lose"
-    #   puts "Sorry, you've been beat!"
-    # else 
-    false
+  def four_in_a_column
+    winning_piece = ""
+    @columns.values.each.with_index do |spaces, i|
+      test = spaces[i]
+      if test != "."
+        if (test == spaces[i+1]) && (test = spaces[i+2]) && (test = spaces[i+3])
+          winning_piece = test
+        end
+      end
+    end
+    winning_piece
   end
 
 end
