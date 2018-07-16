@@ -49,6 +49,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_it_checks_for_a_win
+    skip
     board = Board.new
     piece = Piece.new("Player", "X")
     turn = Turn.new(board, piece)
@@ -56,7 +57,53 @@ class BoardTest < Minitest::Test
     turn.new_guess("A")
     turn.one_turn_cycle
 
-    refute board.win?
+    refute board.horizontal_win?
   end
+
+  def test_it_can_find_four_in_a_column
+    board = Board.new
+
+    board.columns["A"] = ["X", "X", "X", "X", ".", "."]
+
+    actual = board.four_in_a_column
+    expected = "X"
+
+    assert_equal expected, actual
+
+    board.columns["A"] = ["X", "X", "O", "X", ".", "."]
+    board.columns["F"] = ["X", "X", "O", "O", "O", "O"]
+
+    actual = board.four_in_a_column
+    expected = "O"
+
+    assert_equal expected, actual
+  end
+
+  def test_it_can_find_four_in_a_row
+    board = Board.new
+
+    board.columns["A"] = ["X", ".", ".", ".", ".", "."]
+    board.columns["B"] = ["X", ".", ".", ".", ".", "."]
+    board.columns["C"] = ["X", ".", ".", ".", ".", "."]
+    board.columns["D"] = ["X", ".", ".", ".", ".", "."]
+
+    expected = "X"
+    actual = board.four_in_a_row
+
+    assert_equal expected, actual
+
+    board.columns["A"] = ["X", ".", ".", ".", ".", "."]
+    board.columns["B"] = ["O", ".", ".", ".", ".", "."]
+    board.columns["C"] = ["O", ".", ".", ".", ".", "."]
+    board.columns["D"] = ["O", ".", ".", ".", ".", "."]
+    board.columns["E"] = ["O", ".", ".", ".", ".", "."]
+
+    expected = "O"
+    actual = board.four_in_a_row
+
+    assert_equal expected, actual
+
+  end
+
 
 end
