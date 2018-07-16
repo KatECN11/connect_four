@@ -24,4 +24,10 @@ class Board
                 end
     @columns.keys.join + ("\n") + joint_rows.reverse.join("\n")
   end
+
+  def win?
+    # input algorithm to determine win/loss/draw
+    false
+  end 
+
 end
