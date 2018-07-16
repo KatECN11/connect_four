@@ -1,28 +1,32 @@
 class Turn
   attr_accessor :board
-  attr_reader :turn_count
+  attr_reader :turn_count, :guess
 
-  def initialize(guess, board, piece)
-    @guess = guess
+  def initialize(board, piece)
+    @guess = ""
     @board = board
     @piece = piece
     @turn_count = 0
   end
 
-  def guess
-    @guess.upcase
+  def new_guess(guess)
+    @guess = guess.upcase
   end
 
   def one_turn_cycle
     find_spot
     board.print_board
+    puts "\nGreat move!"
+    puts "\n"
     computer_turn
     find_spot
     board.print_board
+    switch_to_player_turn
+    puts "What column would you like to place your piece?"
   end
 
   def find_spot
-    guess_column = @board.columns[guess]
+    guess_column = @board.columns[@guess]
     first_open_space = guess_column.find_index do |space|
                          space == "."
                        end
@@ -38,6 +42,9 @@ class Turn
     end
   end
 
+  def switch_to_player_turn
+    @piece.symbol = "X"
+  end
 
 
 end
