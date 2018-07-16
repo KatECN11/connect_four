@@ -91,6 +91,18 @@ class BoardTest < Minitest::Test
     actual = board.four_in_a_row
 
     assert_equal expected, actual
+
+    board.columns["A"] = ["X", ".", ".", ".", ".", "."]
+    board.columns["B"] = ["O", ".", ".", ".", ".", "."]
+    board.columns["C"] = ["O", ".", ".", ".", ".", "."]
+    board.columns["D"] = ["O", ".", ".", ".", ".", "."]
+    board.columns["E"] = ["O", ".", ".", ".", ".", "."]
+
+    expected = "O"
+    actual = board.four_in_a_row
+
+    assert_equal expected, actual
+
   end
 
 
