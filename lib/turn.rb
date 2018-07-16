@@ -11,6 +11,7 @@ class Turn
 
   def new_guess(guess)
     @guess = guess.upcase
+    one_turn_cycle
   end
 
   def one_turn_cycle
@@ -22,7 +23,6 @@ class Turn
     find_spot
     board.print_board
     switch_to_player_turn
-    puts "What column would you like to place your piece?"
   end
 
   def find_spot

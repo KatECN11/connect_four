@@ -27,7 +27,14 @@ class Board
 
   def win?
     # input algorithm to determine win/loss/draw
+    # if  == "win"
+    #   puts "You win!"
+    # elsif  == "draw"
+    #   puts "Tie Game"
+    # elsif  == "lose"
+    #   puts "Sorry, you've been beat!"
+    # else 
     false
-  end 
+  end
 
 end
