@@ -55,10 +55,14 @@ class Board
         end
       end
     winning_piece
-  end 
+  end
 
-
-
-
+  def end?
+    if four_in_a_row == "" && four_in_a_column == ""
+      false
+    else
+      true
+    end
+  end
 
 end

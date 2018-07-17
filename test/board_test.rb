@@ -48,18 +48,6 @@ class BoardTest < Minitest::Test
     assert_equal expected, board.print_prep
   end
 
-  def test_it_checks_for_a_win
-    skip
-    board = Board.new
-    piece = Piece.new("Player", "X")
-    turn = Turn.new(board, piece)
-
-    turn.new_guess("A")
-    turn.one_turn_cycle
-
-    refute board.horizontal_win?
-  end
-
   def test_it_can_find_four_in_a_column
     board = Board.new
 
@@ -102,7 +90,18 @@ class BoardTest < Minitest::Test
     actual = board.four_in_a_row
 
     assert_equal expected, actual
+  end
 
+  def test_it_returns_true_when_win_occurs
+    board = Board.new
+
+    board.columns["A"] = ["X", "X", "X", "X", ".", "."]
+    assert board.end?
+
+    board.columns["A"] = ["X", ".", ".", ".", ".", "."]
+    board.columns["B"] = ["O", ".", ".", ".", ".", "."]
+
+    refute board.end?
   end
 
 
