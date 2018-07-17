@@ -1,6 +1,6 @@
 class Turn
-  attr_accessor :board
-  attr_reader :turn_count, :guess
+  attr_accessor :board, :turn_count
+  attr_reader :guess
 
   def initialize(board, piece)
     @guess = ""
@@ -16,12 +16,12 @@ class Turn
 
   def one_turn_cycle
     find_spot
-    board.print_board
+    puts @board.print_board
     puts "\nGreat move!"
     puts "\n"
     computer_turn
     find_spot
-    board.print_board
+    puts @board.print_board
     switch_to_player_turn
   end
 

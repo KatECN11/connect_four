@@ -14,10 +14,6 @@ class Board
   end
 
   def print_board
-    puts print_prep
-  end
-
-  def print_prep
     rows = @columns.values.transpose
     joint_rows = rows.map do |row|
                   row.join
