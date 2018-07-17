@@ -104,5 +104,18 @@ class BoardTest < Minitest::Test
     refute board.end?
   end
 
+  def test_it_prints_win_or_loss
+    board = Board.new
+
+    board.columns["A"] = ["X", "X", "X", "X", ".", "."]
+
+    assert_equal "You win!", board.determination
+
+    board.columns["A"] = ["X", ".", ".", ".", ".", "."]
+    board.columns["B"] = ["O", ".", ".", ".", ".", "."]
+
+    assert_equal "You lose.", board.determination
+  end
+
 
 end

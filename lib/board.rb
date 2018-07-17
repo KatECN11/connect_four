@@ -65,4 +65,12 @@ class Board
     end
   end
 
+  def determination
+    if four_in_a_row == "X" || four_in_a_column == "X"
+      "You win!"
+    else
+      "You lose."
+    end
+  end 
+
 end

@@ -15,8 +15,10 @@ while play.turn_count <= 7
   play.new_guess(new_guess)
 end
 
-until board.win?
-    puts "What column would you like to place your piece?"
-    new_guess = gets.chomp
-    play.new_guess(new_guess)
+until board.end?
+  puts "What column would you like to place your piece?"
+  new_guess = gets.chomp
+  play.new_guess(new_guess)
 end
+
+board.determination
