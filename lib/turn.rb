@@ -11,18 +11,20 @@ class Turn
 
   def new_guess(guess)
     @guess = guess.upcase
-    one_turn_cycle
   end
 
-  def one_turn_cycle
+  def player_turn
+    @piece.symbol = "X"
     find_spot
     puts @board.print_board
     puts "\nGreat move!"
     puts "\n"
-    computer_turn
+  end
+
+  def computer_turn
+    computer_turn_set_up
     find_spot
     puts @board.print_board
-    switch_to_player_turn
   end
 
   def find_spot
@@ -34,17 +36,11 @@ class Turn
     guess_column[first_open_space] = @piece.symbol
   end
 
-  def computer_turn
+  def computer_turn_set_up
     @piece.symbol = "O"
     @guess = @board.columns.keys.shuffle.pop
     until @board.columns[@guess].include?'.'
       @guess = @board.columns.keys.shuffle.pop
     end
   end
-
-  def switch_to_player_turn
-    @piece.symbol = "X"
-  end
-
-
 end
