@@ -1,8 +1,7 @@
 class Piece
-  attr_accessor :owner, :symbol
+  attr_accessor :symbol
 
   def initialize(owner, symbol)
-    @owner = owner
     @symbol = symbol
   end
 end

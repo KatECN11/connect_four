@@ -39,6 +39,32 @@ class BoardTest < Minitest::Test
     assert_equal expected, actual
   end
 
+  def test_it_joins_the_array
+    board = Board.new
+
+    board.columns["A"] = ["X", "O", "X", "X", "X", "X"]
+    expected = ["XOXXXX", "......","......","......","......","......","......"]
+    assert_equal expected, board.join_spaces(board.columns.values)
+  end
+
+  def test_it_puts_rows_in_strings
+    board = Board.new
+    board.columns["A"] = ["X", "O", "X", "X", "X", "X"]
+
+    expected = ["X......", "O......", "X......", "X......", "X......", "X......",]
+
+    assert_equal expected, board.rows_in_string
+  end
+
+  def test_it_puts_columns_in_strings
+    board = Board.new
+
+    board.columns["A"] = ["X", "O", "X", "X", "X", "X"]
+    expected = ["XOXXXX", "......","......","......","......","......","......"]
+
+    assert_equal expected, board.columns_in_string
+  end
+
   def test_it_prints_board
     board = Board.new
 
