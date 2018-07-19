@@ -6,7 +6,6 @@ class Game
     @turn = turn
   end
 
-  # Ceo method
   def new_game
     start_game
     first_7_moves
@@ -29,20 +28,23 @@ class Game
   end
 
   def play_until_win
-    while @turn.turn_count <= 42
+    while @turn.turn_count < 41
       puts "What column would you like to place your piece?"
       new_guess = gets.chomp
       @turn.new_guess(new_guess)
       @turn.player_turn
-        if win?
-          determination
-          break
-        end
-      @turn.computer_turn
       if win?
-        determination
+        puts determination
         break
       end
+      @turn.computer_turn
+      if win?
+        puts determination
+        break
+      end
+    end
+    if !win?
+      puts "Draw!"
     end
   end
 
@@ -52,17 +54,15 @@ class Game
 
   def straight_win?(joint_spaces)
     joint_spaces.any? do |space|
-        space.include? (@piece.symbol * 4)
+        space.include?(@piece.symbol * 4)
       end
   end
 
-
   def determination
     if @piece.symbol == "X"
-      puts "You win!"
+      "You win!"
     else
-      puts "You lose."
+      "You lose."
     end
   end
-
 end

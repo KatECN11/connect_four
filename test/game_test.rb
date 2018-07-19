@@ -58,6 +58,7 @@ class GameTest < Minitest::Test
   end
 
   def test_it_can_tell_win_versus_loss
+  @piece.symbol = "X"
   assert_equal "You win!", @game.determination
 
   @piece.symbol = "O"
